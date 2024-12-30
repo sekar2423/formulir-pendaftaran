@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Pendaftaran</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .form-container input, .form-container textarea, .form-container button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    .output h3 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Formulir Pendaftaran</h2>
+    <form id="formPendaftaran">
+      <label for="namaLengkap">Nama Lengkap:</label>
+      <input type="text" id="namaLengkap" name="namaLengkap" placeholder="Masukkan nama lengkap" required>
+
+      <label for="namaPanggilan">Nama Panggilan:</label>
+      <input type="text" id="namaPanggilan" name="namaPanggilan" placeholder="Masukkan nama panggilan" required>
+
+      <label for="ttl">Tempat, Tanggal Lahir:</label>
+      <input type="text" id="ttl" name="ttl" placeholder="Contoh: Jakarta, 1 Januari 2010" required>
+
+      <label for="alamat">Alamat:</label>
+      <textarea id="alamat" name="alamat" placeholder="Masukkan alamat lengkap" required></textarea>
+
+      <label for="sekolah">Sekolah:</label>
+      <input type="text" id="sekolah" name="sekolah" placeholder="Masukkan nama sekolah" required>
+
+      <label for="kelas">Kelas:</label>
+      <input type="text" id="kelas" name="kelas" placeholder="Masukkan kelas" required>
+
+      <label for="namaOrangTua">Nama Orang Tua:</label>
+      <input type="text" id="namaOrangTua" name="namaOrangTua" placeholder="Masukkan nama orang tua" required>
+
+      <label for="telepon">Nomor Telepon:</label>
+      <input type="tel" id="telepon" name="telepon" placeholder="Masukkan nomor telepon" required>
+
+      <button type="button" onclick="tampilkanOutput()">Kirim</button>
+    </form>
+
+    <div id="output" class="output" style="display: none;">
+      <h3>Hasil Pendaftaran</h3>
+      <p><strong>Nama Lengkap:</strong> <span id="outputNamaLengkap"></span></p>
+      <p><strong>Nama Panggilan:</strong> <span id="outputNamaPanggilan"></span></p>
+      <p><strong>Tempat, Tanggal Lahir:</strong> <span id="outputTtl"></span></p>
+      <p><strong>Alamat:</strong> <span id="outputAlamat"></span></p>
+      <p><strong>Sekolah:</strong> <span id="outputSekolah"></span></p>
+      <p><strong>Kelas:</strong> <span id="outputKelas"></span></p>
+      <p><strong>Nama Orang Tua:</strong> <span id="outputNamaOrangTua"></span></p>
+      <p><strong>Nomor Telepon:</strong> <span id="outputTelepon"></span></p>
+      <hr>
+      <h3>Output Hasil Akhir:</h3>
+      <p><span id="outputHasilAkhir"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function tampilkanOutput() {
+      // Ambil nilai dari input
+      const namaLengkap = document.getElementById('namaLengkap').value;
+      const namaPanggilan = document.getElementById('namaPanggilan').value;
+      const ttl = document.getElementById('ttl').value;
+      const alamat = document.getElementById('alamat').value;
+      const sekolah = document.getElementById('sekolah').value;
+      const kelas = document.getElementById('kelas').value;
+      const namaOrangTua = document.getElementById('namaOrangTua').value;
+      const telepon = document.getElementById('telepon').value;
+
+      // Tampilkan output
+      document.getElementById('outputNamaLengkap').innerText = namaLengkap;
+      document.getElementById('outputNamaPanggilan').innerText = namaPanggilan;
+      document.getElementById('outputTtl').innerText = ttl;
+      document.getElementById('outputAlamat').innerText = alamat;
+      document.getElementById('outputSekolah').innerText = sekolah;
+      document.getElementById('outputKelas').innerText = kelas;
+      document.getElementById('outputNamaOrangTua').innerText = namaOrangTua;
+      document.getElementById('outputTelepon').innerText = telepon;
+
+      // Tampilkan hasil akhir gabungan
+      const hasilAkhir = `
+        Pendaftaran berhasil untuk ${namaLengkap} (${namaPanggilan}), lahir di ${ttl}.
+        Tinggal di ${alamat}, belajar di ${sekolah}, kelas ${kelas}.
+        Nama orang tua: ${namaOrangTua}. Nomor telepon: ${telepon}.
+      `;
+      document.getElementById('outputHasilAkhir').innerText = hasilAkhir;
+
+      // Tampilkan div hasil
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
